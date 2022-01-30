@@ -19,7 +19,7 @@ using namespace std;
 
     void findByAccount(char accnum[])
     {
-        char n1[13],n2[13],n3[13],n4[13],n5[13];
+        char n1[12],n2[12],n3[12],n4[12],n5[12];
         strcpy(n1,"962381481722");
         strcpy(n2,"915877994040");
         strcpy(n3,"721885008140");
@@ -34,8 +34,8 @@ int main()
 {
     int choice;
     long amt;
-    char name[30],adhar[13],num[11];
-    char accNum[13],pin[5];
+    char name1[15],name2[15],name3[15],adhar[12],num[10];
+    char accNum[12],pin[5];
     long amount = 16500;
     cout<<"\n Select one option from the following..";
     cout<<"\n 1. Open Account"<<"\n 2. View Account"
@@ -50,63 +50,103 @@ int main()
         case 1:
             cout<<"\n Your option is Open Account..";
             cout<<"\n To Open Account follow the instruction below..";
-            cout<<"\n Enter Your name : ";
-            cin>>name;
+            cout<<"\n Enter your first name : ";
+            cin>>name1;
+            cout<<"\n Enter your middle name : ";
+            cin>>name2;
+            cout<<"\n Enter your last name : ";
+            cin>>name3;
             cout<<"\n Enter your Adhaar number : ";
             cin>>adhar;
-            cout<<"\n Enter your mobile number : ";
-            cin>>num;
-            cout<<"\n Enter opening amount for deposite : ";
-            cin>>amt;
-            cout<<"\n Your Account opened successfully..!";
+            if(adhar[12]==0)
+            {
+                cout<<"\n Enter your mobile number : ";
+                cin>>num;
+                if(num[10]==0)
+                {
+                    cout<<"\n Enter opening amount for deposite : ";
+                    cin>>amt;
+                    cout<<"\n Your Account opened successfully..!";
+                }
+                else
+                    cout<<"\n You have entered wrong mobile number..!";
+            }
+            else
+                cout<<"\n You have entered wrong Adhaar number..!";
         break;
         case 2:
             cout<<"\n Your option is View Account..";
             cout<<"\n Enter 12 digit Account number : ";
             cin>>accNum;
+            if(accNum[12]==0)
             viewAccount(accNum);
+            else
+            cout<<"\n You have entered wrong account number..!";
         break;
         case 3:
             cout<<"\n Your option is Deposit Amount..";
             cout<<"\n Enter 12 digit Account number : ";
             cin>>accNum;
-            cout<<"\n Enter amount to Deposit : Rs.";
-            cin>>amt;
-            cout<<"\n Processing...";
-            sleep(5);
-            cout<<"\n Your amount deposited successfully..!";
+            if(accNum[12]==0)
+            {
+                cout<<"\n Enter amount to Deposit : Rs.";
+                cin>>amt;
+                cout<<"\n Enter PIN : ";
+                cin>>pin;
+                cout<<"\n Processing...";
+                sleep(5);
+                cout<<"\n Your amount deposited successfully..!";
+            }
+            else
+            cout<<"\n You have entered wrong account number..!";
         break;
         case 4:
             cout<<"\n Your option is Withdraw Amount..";
             cout<<"\n Enter 12 digit Account number : ";
             cin>>accNum;
-            cout<<"\n Enter amount to Withdraw : Rs.";
-            cin>>amt;
-            cout<<"\n Enter PIN : ";
-            cin>>pin;
-            cout<<"\n Processing...";
-            sleep(5);
-            cout<<"\n Please, Collect your cash..!";
+            if(accNum[12]==0)
+            {
+                cout<<"\n Enter amount to Withdraw : Rs.";
+                cin>>amt;
+                cout<<"\n Enter PIN : ";
+                cin>>pin;
+                cout<<"\n Processing...";
+                sleep(5);
+                cout<<"\n Please, Collect your cash..!";
+            }
+            else
+            cout<<"\n You have entered wrong account number..!";
         break;
         case 5:
             cout<<"\n Your option is View balance..";
             cout<<"\n Enter 12 digit Account number : ";
             cin>>accNum;
-            cout<<"\n Enter PIN : ";
-            cin>>pin;
-            cout<<"\n Your account balance : Rs."<<amount;
+            if(accNum[12]==0)
+            {
+                cout<<"\n Enter PIN : ";
+                cin>>pin;
+                cout<<"\n Your account balance : Rs."<<amount;
+            }
+            else
+            cout<<"\n You have entered wrong account number..!";
         break;
         case 6:
             cout<<"\n Your option is Search Account..";
             cout<<"\n Enter 12 digit Account number : ";
             cin>>accNum;
+            if(accNum[12]==0)
             findByAccount(accNum);
+            else
+            cout<<"\n You have entered wrong account number..!";
         break;
         case 7:
             cout<<"\n Your option is Exit..";
             cout<<"\n Please wait...";
             sleep(5);
-            system("cls");            
+            system("cls");   
+        break;
+        default:
+            cout<<"\n Invalid choice..!";         
     }
     return 0;
 }
